@@ -11,7 +11,7 @@
     <title>Hello, world!</title>
 </head>
 <body>
-    <video src="./assets/b_tapioka_fix.mp4"  type="video/mp4" class="img" muted="muted" loop="loop" autoplay="autoplay">
+    <video  type="video/mp4" class="img" muted="muted" loop="loop" autoplay="autoplay" id="videoOne">
     </video>
 
 
@@ -21,6 +21,17 @@
         height: 100vh;
     }
 </style>
+    <script>
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "assets/b_tapioka_fix.mp4", true);
+        xhr.responseType = "blob";
+        xhr.onload = function () {
+            var video = document.getElementById("videoOne");
+            video.src = window.URL.createObjectURL(xhr.response);
+            video.play();
+        };
+        xhr.send();
+    </script>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
